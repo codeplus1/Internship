@@ -14,7 +14,7 @@
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Master
                     Entry</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Add Admin</a></li>
+                <li><a class="nav-link" href="{{ route('user.index') }}">Manage User</a></li>
             </ul>
         </li>
 
@@ -25,9 +25,7 @@
                     class="material-icons">school</i><span>Students</span></a>
             <ul class="dropdown-menu">
                 <li><a class="nav-link" href="#">Admission</a></li>
-                <li><a class="nav-link" href="#">Enquiry</a></li>
-                <li><a class="nav-link" href="#">Testimonial</a></li>
-                <li><a class="nav-link" href="#">Certificate</a></li>
+
             </ul>
         </li>
 
