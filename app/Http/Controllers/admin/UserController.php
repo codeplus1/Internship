@@ -13,10 +13,11 @@ class UserController extends Controller
 {
 
     //  get all users
-    public function alluser() {
+    public function alluser()
+    {
         // $user = User::all();
         $softDeletedUsers = User::onlyTrashed()->get();
-        return view('backend.user.delete',compact('softDeletedUsers'));
+        return view('backend.user.delete', compact('softDeletedUsers'));
     }
     /**
      * Display a listing of the resource.
@@ -91,15 +92,24 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('backend.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
+
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->usertype = $request->usertype;
+        $user->password = Hash::make($request->password);
+        $user->update();
+
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
     }
 
     /**
