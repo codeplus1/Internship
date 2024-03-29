@@ -18,16 +18,5 @@
             </ul>
         </li>
 
-
-        <li class="menu-header">Students</li>
-        <li class="dropdown">
-            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                    class="material-icons">school</i><span>Students</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Admission</a></li>
-
-            </ul>
-        </li>
-
     </ul>
 </aside>
