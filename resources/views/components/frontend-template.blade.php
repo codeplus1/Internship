@@ -10,6 +10,7 @@
     <title>Internship</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="/assets/css/app.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
@@ -82,7 +83,8 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i class="material-icons">store_mall_directory</i><span>Category</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    class="material-icons">store_mall_directory</i><span>Category</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{{ route('Inventory.index') }}">Add Category</a></li>
                             </ul>
@@ -90,8 +92,10 @@
                     </ul>
                     <ul class="sidebar-menu">
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i class="material-icons">local_mall</i><span>Product</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    class="material-icons">local_mall</i><span>Product</span></a>
                             <ul class="dropdown-menu">
+                                {{-- <li><a class="nav-link" href="{{ route('Product.create') }}">Add Product</a></li> --}}
                                 <li><a class="nav-link" href="{{ route('Product.index') }}">Add Product</a></li>
                             </ul>
                         </li>
@@ -127,6 +131,13 @@
     <script src="/assets/js/page/datatables.js"></script>
     <!-- Custom JS File -->
     <script src="/assets/js/custom.js"></script>
+    <!-- Chartjs -->
+    <script src="path/to/chartjs/dist/chart.umd.js"></script>
+    <script>
+        const myChart = new Chart(ctx, {
+            ...
+        });
+    </script>
 </body>
 
 <!-- index.html  21 Nov 2019 03:47:04 GMT -->

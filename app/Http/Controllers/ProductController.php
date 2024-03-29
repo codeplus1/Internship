@@ -11,10 +11,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function total(){
+        $products = Product::all();
+        return $products->toArray();
+    }
+
     public function index()
     {
         $products = Product::all();
-        return view('frontend.Product.index', compact('products'));
+        return view('frontend.Product.index',compact('products'));
+        // return $products->toArray();
     }
 
     /**

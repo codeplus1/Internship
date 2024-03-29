@@ -45,7 +45,44 @@
                 </div>
             </div>
 
+            <section>
+                <div class="container">
 
+            <canvas id="productChart" width="400" height="400"></canvas>
+            <script>
+                // Retrieve the data passed from the controller
+                var products = @json($products);
+
+                // Extract the necessary data for the chart (e.g., product names and quantities)
+                var productNames = products.map(product => product.name);
+                var productQuantities = products.map(product => product.quantity);
+
+                // Create a Chart.js chart
+                var ctx = document.getElementById('productChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: productNames,
+                        datasets: [{
+                            label: 'Product Quantities',
+                            data: productQuantities,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+
+                </div>
+            </section>
         </div>
     </section>
 </x-frontend-template>
