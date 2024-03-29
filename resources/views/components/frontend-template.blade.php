@@ -1,30 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 
 <!-- index.html  21 Nov 2019 03:44:50 GMT -->
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Internship</title>
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="/assets/css/app.min.css">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/bundles/datatables/datatables.min.css">
-  <!-- Custom style CSS -->
-  <link rel="stylesheet" href="/assets/css/custom.css">
-  <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/codeplus.css">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Internship</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/bundles/datatables/datatables.min.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/codeplus.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -43,14 +43,13 @@
                                 <i data-feather="maximize"></i>
                             </a>
                         </li>
-
                     </ul>
                 </div>
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                                src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" class="user-img-radious-style"> <span
-                                class="d-sm-none d-lg-inline-block"></span></a>
+                                src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}"
+                                class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
                             <div class="dropdown-title">{{ Auth::user()->name }}</div>
                             <a href="{{ route('profile.show') }}" class="dropdown-item has-icon"> <i
@@ -73,9 +72,34 @@
                     </li>
                 </ul>
             </nav>
+            <!-- Sidebar start --------------------------------->
             <div class="main-sidebar sidebar-style-2">
-                <x-sidebar /> <!-- sidebar code is extended Here from Components folder -->
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="/dashboard"> <img alt="image" src="/assets/img/logo.png" class="header-logo" />
+                            <span class="logo-name">Inventory</span>
+                        </a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i class="material-icons">store_mall_directory</i><span>Category</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('Inventory.index') }}">Add Category</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="sidebar-menu">
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i class="material-icons">local_mall</i><span>Product</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('Product.index') }}">Add Product</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
             </div>
+            <!--Sidebar End -------------------------------------->
+
             <!-- Main Content -->
             <div class="main-content">
                 {{ $slot }}
@@ -106,4 +130,5 @@
 </body>
 
 <!-- index.html  21 Nov 2019 03:47:04 GMT -->
+
 </html>

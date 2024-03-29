@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/home', function () {
         return view('frontend.home');
     })->name('home');
+    Route::resource('Inventory', InventoryController::class);
+    Route::resource('Product',ProductController::class);
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {

@@ -39,23 +39,8 @@
                                                     class="btn btn-warning btn-sm">
                                                     <i class="far fa-edit"></i> Edit
                                                 </a>
-                                                <a href="{{ route('user.show', $item->id) }}"
-                                                    class="btn btn-info btn-sm">
-                                                    <i class="fas fa-eye"></i> Show
-                                                </a>
-                                                <a href="#"
-                                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $item->id }}').submit();"
-                                                    class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                                <!-- Hidden form for delete action -->
-                                                <form id="delete-form-{{ $item->id }}"
-                                                    action="{{ route('user.destroy', $item->id) }}" method="POST"
-                                                    style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                                <a href="#" onclick="event.preventDefault(); document.getElementById('restore-form-{{ $item->id }}').submit();">Restore</a>
+
+                                                <a href="#" onclick="event.preventDefault(); document.getElementById('restore-form-{{ $item->id }}').submit();" class="btn btn-info btn-sm">Restore</a>
                                                 <!-- Hidden form for restore action -->
                                                 <form id="restore-form-{{ $item->id }}" action="{{ route('user.restore.post', $item->id) }}" method="POST" style="display: none;">
                                                     @csrf

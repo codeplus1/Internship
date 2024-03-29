@@ -8,6 +8,7 @@ use App\Notifications\OtpNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -53,7 +54,7 @@ class UserController extends Controller
         $password = rand(11111, 999999);
         $user->password = Hash::make($password);
         $user->save();
-
+        toast('Your Record has been submited!','success')->timerProgressBar();
         $data = [
             "title" => "Your Temporary Password",
             "description" => "Dear $user->name, Thank You for registering with our platform \n your temporary password is $password, You can change it later"
@@ -61,7 +62,7 @@ class UserController extends Controller
 
         Notification::send($user, new OtpNotification($data));
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('user.index');
     }
 
     public function restore($id)
@@ -72,10 +73,12 @@ class UserController extends Controller
         // If the user exists, restore the user
         if ($user) {
             $user->restore();
-            return redirect()->route('user.index')->with('success', 'User restored successfully.');
+            toast('Your Record has been restored!','success')->timerProgressBar();
+            return redirect()->route('user.index');
         } else {
             // If the user does not exist or is not soft-deleted, return an error message
-            return redirect()->route('user.index')->with('error', 'User not found or already restored.');
+            toast('user not found or already restored!','success')->timerProgressBar();
+            return redirect()->route('user.index');
         }
     }
 
@@ -108,8 +111,9 @@ class UserController extends Controller
         $user->usertype = $request->usertype;
         $user->password = Hash::make($request->password);
         $user->update();
+        toast('Your Record has been Updated!','success')->timerProgressBar();
 
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -120,7 +124,7 @@ class UserController extends Controller
         // Find the user by ID
         $user = User::find($id);
         $user->delete();
-
+        toast('Your Record has been deleted!','success')->timerProgressBar();
         // Check if there are any other active admins
         $remainingAdmins = User::where('usertype', 'admin')->where('status', 1)->count();
         if ($remainingAdmins > 0) {

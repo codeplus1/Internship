@@ -1,2 +1,3 @@
-<h1>Hello This is Home Page</h1>
+<x-frontend-template>
 
+</x-frontend-template>
