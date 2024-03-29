@@ -45,44 +45,70 @@
                 </div>
             </div>
 
-            <section>
-                <div class="container">
 
-            <canvas id="productChart" width="400" height="400"></canvas>
-            <script>
-                // Retrieve the data passed from the controller
-                var products = @json($products);
+            <div class="container-fluid">
+                <canvas id="productChart" width="10vh" height="10vh"></canvas>
+                <script>
+                    // Retrieve the data passed from the controller
+                    var products = @json($products);
+                    // Extract the necessary data for the chart (e.g., product names, quantities, and prices)
+                    var productNames = products.map(product => product.name);
+                    var productQuantities = products.map(product => product.quantity);
+                    var productManufacturePrices = products.map(product => product.manufacture_price);
+                    var productSellingPrices = products.map(product => product.selling_price);
 
-                // Extract the necessary data for the chart (e.g., product names and quantities)
-                var productNames = products.map(product => product.name);
-                var productQuantities = products.map(product => product.quantity);
-
-                // Create a Chart.js chart
-                var ctx = document.getElementById('productChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: productNames,
-                        datasets: [{
-                            label: 'Product Quantities',
-                            data: productQuantities,
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                    // Create a Chart.js chart
+                    var ctx = document.getElementById('productChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: productNames,
+                            datasets: [{
+                                label: 'Product Quantities',
+                                data: productQuantities,
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }, {
+                                label: 'Manufacture Price',
+                                data: productManufacturePrices,
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }, {
+                                label: 'Selling Price',
+                                data: productSellingPrices,
+                                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                                borderColor: 'rgba(255, 206, 86, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+                                        var value = tooltipItem.yLabel;
+                                        if (datasetLabel === 'Product Quantities') {
+                                            value += ' (Quantity)';
+                                        } else {
+                                            value += ' (Price)';
+                                        }
+                                        return datasetLabel + ': ' + value;
+                                    }
+                                }
                             }
                         }
-                    }
-                });
-            </script>
+                    });
+                </script>
+            </div>
 
-                </div>
-            </section>
+
         </div>
     </section>
 </x-frontend-template>

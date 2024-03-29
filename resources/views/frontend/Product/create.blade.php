@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea id="description" class="form-control summernote" name="description"
-                                    placeholder="कृप्या Notice को बारेमा लेखनुहोस्"></textarea>
+                                    placeholder="कृप्या product को बारेमा लेखनुहोस्"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
