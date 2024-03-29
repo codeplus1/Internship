@@ -14,3 +14,9 @@
 
 Now All done Enjoy😊
 
+## About Project
+- Admin Module
+   -Can create, update and deleted the User (Soft delete)
+  - when Admin Create a User then User will get temorarily password for the system later they can change their password. also Admin has the right to change user password. but admin dont have right to see any user passwords.
+-User Module
+    - Can create Product, Inventory, Edit, and visualize data in bar chart
