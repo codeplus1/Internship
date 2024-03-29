@@ -2,7 +2,7 @@
 ## Follow the below steps to run this project in your system.
 
 
-1. git clone project_url
+1. git clone https://github.com/codeplus1/Internship.git
 2. run composer install
 3. php artisan:key generate
 4. create database
