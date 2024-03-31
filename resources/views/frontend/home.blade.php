@@ -46,8 +46,9 @@
             </div>
 
 
-            <div class="container-fluid">
-                <canvas id="productChart" width="10vh" height="10vh"></canvas>
+            <div class="container">
+                <div class="col-md-6">
+                    <canvas id="productChart" width="20px" height="15px"></canvas>
                 <script>
                     // Retrieve the data passed from the controller
                     var products = @json($products);
@@ -106,6 +107,7 @@
                         }
                     });
                 </script>
+                </div>
             </div>
 
 
